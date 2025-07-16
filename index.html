@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plan de Mejoramiento - Matemáticas Noveno</title>
+<style>
+  body { font-family: "Comic Sans MS", cursive, sans-serif; background: #eef6ff; color: #333; padding: 20px; }
+  h1, h2, h3 { color: #2a75bb; }
+  .pregunta { background: #cce4ff; padding: 10px; border-left: 5px solid #2a75bb; margin-top: 20px; }
+  .respuesta { background: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid #bbb; padding: 8px; text-align: center; }
+  th { background: #a7d3f5; }
+  canvas { display: block; margin: 10px auto; background: #fff; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<h1>📘 Plan de Mejoramiento - Grado Noveno</h1>
+
+<div class="pregunta">1️⃣ ¿Cuánto gastó el padre de familia en cada categoría si el total fue de $1'120.000?</div>
+<div class="respuesta">
+<p>Se calculó multiplicando el porcentaje de cada gasto por el total:</p>
+<ul>
+  <li>Ropa: 10% → $112.000</li>
+  <li>Transporte: 15% → $168.000</li>
+  <li>Alquiler: 35% → $392.000</li>
+  <li>Servicios: 10% → $112.000</li>
+  <li>Comida: 25% → $280.000</li>
+  <li>Otros: 5% → $56.000</li>
+</ul>
+<canvas id="graficoCircular" width="400" height="300"></canvas>
+</div>
+
+<div class="pregunta">2️⃣ ¿Cómo queda la tabla de frecuencias?</div>
+<div class="respuesta">
+<table>
+<tr><th>Concepto</th><th>Porcentaje</th><th>Valor</th></tr>
+<tr><td>Ropa</td><td>10%</td><td>$112.000</td></tr>
+<tr><td>Transporte</td><td>15%</td><td>$168.000</td></tr>
+<tr><td>Alquiler</td><td>35%</td><td>$392.000</td></tr>
+<tr><td>Servicios</td><td>10%</td><td>$112.000</td></tr>
+<tr><td>Comida</td><td>25%</td><td>$280.000</td></tr>
+<tr><td>Otros</td><td>5%</td><td>$56.000</td></tr>
+<tr><th>Total</th><th>100%</th><th>$1'120.000</th></tr>
+</table>
+</div>
+
+<div class="pregunta">3️⃣ Describe cada prisma observado</div>
+<div class="respuesta">
+<p><strong>Prisma verde:</strong> octagonal (8 caras laterales, 24 aristas, 16 vértices).<br>
+<strong>Prisma azul:</strong> pentagonal (5 caras laterales, 15 aristas, 10 vértices).<br>
+<strong>Prisma naranja:</strong> hexagonal (6 caras laterales, 18 aristas, 12 vértices).</p>
+</div>
+
+<div class="pregunta">4️⃣ Si un prisma tiene 9 caras, ¿qué tipo es? ¿Cuántas aristas y vértices?</div>
+<div class="respuesta">
+<p>Es un prisma heptagonal porque tiene 7 lados en la base (2 bases + 7 caras laterales = 9 caras).<br>
+Tiene 21 aristas y 14 vértices.</p>
+</div>
+
+<div class="pregunta">5️⃣ ¿A qué prisma corresponde cada desarrollo plano?</div>
+<div class="respuesta">
+<ul>
+  <li>a. Prisma hexagonal</li>
+  <li>b. Prisma pentagonal</li>
+  <li>c. Prisma cuadrangular</li>
+  <li>d. Prisma triangular</li>
+</ul>
+
+</div>
+
+<div class="pregunta">6️⃣ ¿Cuáles son los elementos del prisma?</div>
+<div class="respuesta">
+<ul>
+  <li>Caras laterales</li>
+  <li>Bases</li>
+  <li>Aristas</li>
+  <li>Vértices</li>
+</ul>
+</div>
+
+<script>
+const canvas = document.getElementById('graficoCircular');
+const ctx = canvas.getContext('2d');
+const datos = [112000, 168000, 392000, 112000, 280000, 56000];
+const colores = ['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0','#ffb366'];
+let total = datos.reduce((a,b) => a+b, 0);
+let anguloInicial = 0;
+
+datos.forEach((valor, i) => {
+  let angulo = (valor/total)*2*Math.PI;
+  ctx.beginPath();
+  ctx.moveTo(200,150);
+  ctx.arc(200,150,100,anguloInicial,anguloInicial+angulo);
+  ctx.closePath();
+  ctx.fillStyle = colores[i];
+  ctx.fill();
+  anguloInicial += angulo;
+});
+</script>
+
+<p style="margin-top: 30px;">✨ <em>Hecho por Nicolas Romero</em></p>
+</body>
+</html>
